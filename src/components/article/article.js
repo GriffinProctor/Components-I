@@ -87,8 +87,62 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+  },
+  {
+    title: 'The Green Bay Packers Will Win The Super Bowl!',
+    date: 'Aug 27th, 2023',
+    firstParagraph: `Its Jordan Love SZN sit amet ben twi'lek padmé darth darth darth moff hutt organa twi'lek. Ben amidala secura skywalker lando
+        moff wicket tatooine luke.Solo wampa wampa calrissian yoda moff.Darth grievous darth gonk darth hutt.Darth baba skywalker
+        watto fett jango maul han.Mon e`,
+
+    secondParagraph: `The Packers are the best! anakin skywalker hutt.Alderaan darth kenobi darth r2- d2
+        windu mothma.Sidious darth calamari moff.Wampa mothma sith wedge solo mara.Darth gonk maul sith moff chewbacca palpatine
+        mace amidala.C - 3po solo skywalker anakin yoda leia.Maul wampa bespin watto jade ewok darth jabba.Lando dantooine moff
+        `,
+
+    thirdParagraph: `Historically elite defense and explosive offense gets them a super bowl victory and kicks off their dynasty! leia calamari ventress skywalker yoda. Binks wicket hutt coruscant sidious
+        naboo ackbar tatooine. Hutt lars padmé darth. Maul solo darth darth jabba qui-gon chewbacca darth maul. padmé wookiee. Leia
+        moff calamari mon obi-wan. Solo grievous lando coruscant. Jinn darth palpatine obi-wan mon.`
+  },
 ];
+
+function articleMaker(articleObj) {
+const articleWrapper = document.createElement('div')
+const articleTitle = document.createElement('h2')
+const articleDate = document.createElement('p')
+const articleParagraphOne = document.createElement('p')
+const articleParagraphTwo = document.createElement('p')
+const articleParagraphThree = document.createElement('p')
+const expandButton = document.createElement('span')
+
+articleWrapper.classList.add('article')
+articleDate.classList.add('date')
+expandButton.classList.add('expandButton')
+
+articleWrapper.appendChild(articleTitle)
+articleWrapper.appendChild(articleDate)
+articleWrapper.appendChild(articleParagraphOne)
+articleWrapper.appendChild(articleParagraphTwo)
+articleWrapper.appendChild(articleParagraphThree)
+articleWrapper.appendChild(expandButton)
+
+articleTitle.textContent = articleObj.title
+articleDate.textContent = articleObj.date
+articleParagraphOne.textContent = articleObj.firstParagraph
+articleParagraphTwo.textContent = articleObj.secondParagraph
+articleParagraphThree.textContent = articleObj.thirdParagraph
+expandButton.textContent = '+'
+
+expandButton.addEventListener('click', () => {
+  articleWrapper.classList.toggle('article-open')
+})
+return articleWrapper
+}
+data.forEach(article => {
+  document.querySelector('div.articles').appendChild(articleMaker(article))
+})
+
+
 
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
